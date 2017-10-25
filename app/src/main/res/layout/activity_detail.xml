@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rcarb.popularmovies.DetailActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/movie_title"
+        android:text="TITLE OF MOVIE"
+        android:layout_weight="1"
+
+
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_poster"
+        android:layout_weight="1"
+
+        >
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/poster_image"
+            />
+>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relase_date"
+                android:text="RELEASE DATE"
+                android:layout_toRightOf="@id/poster_image"
+                android:layout_alignParentRight="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/movie_length"
+                android:text="MOVIE_LENGTH"
+                android:layout_toRightOf="@id/poster_image"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/relase_date"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_rating"
+                android:layout_toRightOf="@id/poster_image"
+                android:layout_below="@id/movie_length"
+                android:text="USER Rating"
+                android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieDescription"
+        android:maxLines="10"
+        android:layout_weight="1"/>
+
+</LinearLayout>
