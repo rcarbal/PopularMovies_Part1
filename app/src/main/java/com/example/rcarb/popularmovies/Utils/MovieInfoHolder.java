@@ -1,13 +1,14 @@
 package com.example.rcarb.popularmovies.Utils;
 
 import android.os.Parcel;
-import android.os.Parcelable;
+
+
 
 /**
- * Created by rcarb on 10/21/2017.
+ * Java class that has getter and setter methods to hold movie information.
+ *
  */
-
-public class MovieInfoHolder implements Parcelable {
+public class MovieInfoHolder{
     private int movieId;
     private String moviePoster;
     private String movieTitle;
@@ -107,33 +108,5 @@ public class MovieInfoHolder implements Parcelable {
         return movieDescription;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(movieId);
-        dest.writeString(moviePoster);
-        dest.writeString(movieTitle);
-        dest.writeString(movieReleaseDate);
-        //TODO: need to implement the movie length.
-
-        dest.writeString(movieRating);
-        dest.writeString(movieDescription);
-    }
-    //Implements the parcel creator
-    public static final Creator<MovieInfoHolder> CREATOR = new Creator<MovieInfoHolder>() {
-        @Override
-        public MovieInfoHolder createFromParcel(Parcel in) {
-            return new MovieInfoHolder(in);
-        }
-
-        @Override
-        public MovieInfoHolder[] newArray(int size) {
-            return new MovieInfoHolder[size];
-        }
-    };
 }
 

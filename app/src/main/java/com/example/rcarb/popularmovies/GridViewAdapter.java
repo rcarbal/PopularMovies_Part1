@@ -1,7 +1,6 @@
 package com.example.rcarb.popularmovies;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +13,7 @@ import com.example.rcarb.popularmovies.Utils.UriBuilderUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
 
 public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ImageViewHolder>{
 
@@ -47,16 +47,15 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ImageV
         Context context = viewGroup.getContext();
         int viewToBeInflated = R.layout.image_view_holder;
         LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldBeattachedImmeidately = false;
+        boolean shouldBeAttachedImeidately = false;
 
-        View view  = inflater.inflate(viewToBeInflated,viewGroup, shouldBeattachedImmeidately);
+        View view  = inflater.inflate(viewToBeInflated,viewGroup, shouldBeAttachedImeidately);
         GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams)view.getLayoutParams();
         params.height = viewGroup.getMeasuredHeight()/2;
         view.setLayoutParams(params);
-        ImageViewHolder viewHolderToBeInflated = new ImageViewHolder(view);
 
 
-        return viewHolderToBeInflated;
+        return new ImageViewHolder(view);
         }
 
 
@@ -83,14 +82,14 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ImageV
     //ViewHolder Class that will hold an imageView
     class ImageViewHolder extends RecyclerView.ViewHolder
                 implements View.OnClickListener{
-        ImageView mImageView;
+        final ImageView mImageView;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
 
-            //cast the imageview
+            //cast the ImageView.
             mImageView = itemView.findViewById(R.id.rv_image_view);
-            //set the onClickListener on the itemview in the viewholder's constructor
+            //set the onClickListener on the itemView in the viewholder's constructor
             itemView.setOnClickListener(this);
         }
 

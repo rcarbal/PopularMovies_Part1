@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,57 +10,63 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/movie_title"
-        android:text="TITLE OF MOVIE"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
+        android:textSize="36sp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:background="#b0e0e6"
+        android:textColor="@android:color/white"
 
 
         />
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rl_poster"
         android:layout_weight="1"
+        android:orientation="horizontal"
 
         >
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/poster_image"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:paddingLeft="36dp"
+            android:contentDescription="@string/movie_poster"
             />
->
+        <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_weight="1">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/relase_date"
-                android:text="RELEASE DATE"
-                android:layout_toRightOf="@id/poster_image"
-                android:layout_alignParentRight="true"
+                android:id="@+id/release_date"
+                android:textSize="32sp"
+                android:layout_marginLeft="20dp"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_length"
-                android:text="MOVIE_LENGTH"
-                android:layout_toRightOf="@id/poster_image"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/relase_date"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/user_rating"
-                android:layout_toRightOf="@id/poster_image"
-                android:layout_below="@id/movie_length"
-                android:text="USER Rating"
-                android:layout_alignParentRight="true"/>
+                android:layout_below="@id/release_date"
+                android:textSize="20sp"
+                android:layout_marginLeft="22dp"/>
+        </RelativeLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/movieDescription"
         android:maxLines="10"
-        android:layout_weight="1"/>
+        android:layout_weight="0.5"
+        android:padding="15dp"/>
 
 </LinearLayout>

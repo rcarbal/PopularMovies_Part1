@@ -1,6 +1,7 @@
 package com.example.rcarb.popularmovies;
 
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -27,11 +28,11 @@ public class MainActivity extends AppCompatActivity
     implements GridViewAdapter.OnItemClicked{
 
     private RecyclerView mRecyclerView;
-    LinearLayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     private GridViewAdapter mAdapter;
-    ArrayList<MovieInfoHolder> parsedMovies;
-    FetchMovieTask task;
-    Context mContext;
+    private ArrayList<MovieInfoHolder> parsedMovies;
+    private FetchMovieTask task;
+    private Context mContext;
 
 
 
@@ -47,11 +48,16 @@ public class MainActivity extends AppCompatActivity
         //The Grid will not change size
         mRecyclerView.setHasFixedSize(true);
 
+        //Sets up the layout manager as a GridView.
         layoutManager = new GridLayoutManager(this, 2);
+
+        //Attaches the adaptor
         mRecyclerView.setLayoutManager(layoutManager);
         
         mContext = MainActivity.this;
         task = new FetchMovieTask(mContext, mRecyclerView);
+
+        //The Default param is to query for most popular.
         task.execute("popular");
     }
 
@@ -65,6 +71,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+
+        //depending on the item selected on the menu item, the proper query param will be used.
 
         if (id == R.id.popular){
             FetchMovieTask task = new FetchMovieTask(mContext,mRecyclerView);
@@ -81,8 +89,8 @@ public class MainActivity extends AppCompatActivity
 
     class FetchMovieTask extends AsyncTask<String, Void,String> {
 
-        Context mContext;
-        RecyclerView mActivitiesRecyclerView;
+        final Context mContext;
+        final RecyclerView mActivitiesRecyclerView;
 
 
         public FetchMovieTask(Context context,
@@ -97,7 +105,7 @@ public class MainActivity extends AppCompatActivity
             String jsonData = "";
 
 
-            if (params[0] == "popular") {
+            if (params[0].equals("popular")) {
                 try {
 
                     jsonData = NetWorkUtils.getResponseFromHttpUrl(UriBuilderUtil.buildPopularUri());
@@ -105,7 +113,7 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
             }
-            if (params[0] == "top_rated") {
+            if (params[0].equals("top_rated")) {
                 try {
 
                     jsonData = NetWorkUtils.getResponseFromHttpUrl(UriBuilderUtil.buildRatedUri());
@@ -125,12 +133,12 @@ public class MainActivity extends AppCompatActivity
             try {
                 ArrayList<MovieInfoHolder> movieArray = JsonUtils.parseJsonObject(s);
 
-                //Get the Size of the Arraylist to pass in to the Adaptor
-                int arraylistSize = movieArray.size();
+                //Get the Size of the ArrayList to pass in to the Adaptor.
+                int arrayListSize = movieArray.size();
                 parsedMovies = movieArray;
 
                 //Get the view from the Context object
-                GridViewAdapter adapter = new GridViewAdapter(arraylistSize, movieArray, MainActivity.this);
+                GridViewAdapter adapter = new GridViewAdapter(arrayListSize, movieArray, MainActivity.this);
                 mActivitiesRecyclerView.setAdapter(adapter);
 
 
@@ -148,9 +156,16 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(int mNumberOfItemsIndex) {
+
+        //Takes the clicked RecyclerView vies id and saves the selected movie information
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-        MovieInfoHolder tranferData = parsedMovies.get(mNumberOfItemsIndex);
-        intent.putExtra("movie",tranferData);
+        MovieInfoHolder holder = parsedMovies.get(mNumberOfItemsIndex);
+        intent.putExtra("movieId",holder.getMovieId());
+        intent.putExtra("moviePoster",holder.getMoviePoster());
+        intent.putExtra("movieTitle",holder.getMovieTitle());
+        intent.putExtra("movieRelease",holder.getMovieReleaseDate());
+        intent.putExtra("movieRating",holder.getMovieRating());
+        intent.putExtra("movieDescription",holder.getMovieDescription());
         startActivity(intent);
     }
 }
