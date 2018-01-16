@@ -160,7 +160,6 @@ public class MainActivity extends AppCompatActivity
         //Takes the clicked RecyclerView vies id and saves the selected movie information
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
         MovieInfoHolder holder = parsedMovies.get(mNumberOfItemsIndex);
-        intent.putExtra("movieId",holder.getMovieId());
         intent.putExtra("moviePoster",holder.getMoviePoster());
         intent.putExtra("movieTitle",holder.getMovieTitle());
         intent.putExtra("movieRelease",holder.getMovieReleaseDate());

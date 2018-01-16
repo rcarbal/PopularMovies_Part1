@@ -9,11 +9,9 @@ import android.os.Parcel;
  *
  */
 public class MovieInfoHolder{
-    private int movieId;
     private String moviePoster;
     private String movieTitle;
     private String movieReleaseDate;
-    private int movieLength;
     private String movieRating;
     private String movieDescription;
 
@@ -21,20 +19,16 @@ public class MovieInfoHolder{
 
     }
 
-    public MovieInfoHolder(int movieId,
-                           String moviePoster,
+    public MovieInfoHolder(String moviePoster,
                            String movieTitle,
                            String movieReleaseDate,
-                           int movieLength,
                            String movieRating,
                            String movieDescription){
 
 
-        this.movieId = movieId;
         this.moviePoster = moviePoster;
         this.movieTitle = movieTitle;
         this.movieReleaseDate = movieReleaseDate;
-        this.movieLength = movieLength;
         this.movieRating = movieRating;
         this.movieDescription =movieDescription;
 
@@ -42,23 +36,13 @@ public class MovieInfoHolder{
     }
 
     protected MovieInfoHolder(Parcel in) {
-        movieId = in.readInt();
         moviePoster = in.readString();
         movieTitle = in.readString();
         movieReleaseDate = in.readString();
-        movieLength = in.readInt();
         movieRating = in.readString();
         movieDescription = in.readString();
     }
 
-
-    public void setMovieId(int movieId){
-        this.movieId = movieId;
-
-    }
-    public int getMovieId(){
-        return movieId;
-    }
 
     public void setMoviePoster(String moviePoster){
         this.moviePoster = moviePoster;
@@ -84,13 +68,6 @@ public class MovieInfoHolder{
         return movieReleaseDate;
     }
 
-    public void setMovieLength(int movieLength){
-        this.movieLength = movieLength;
-    }
-
-    public int getMovieLength(){
-        return movieLength;
-    }
 
     public void setMovieRating(String movieRating){
         this.movieRating = movieRating;
