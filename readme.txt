@@ -1,12 +1,1 @@
-This is the Popular Movies Part 1 project for the Udacity Android Development Nanodegree.
-This Project was submitted by Ricardo A. Carballo.
-
-Special Notes.
-
-To run this project, please add the themoviedb api key to:
-
-UriBuilderUtil.java
-private static String apiKey = "";
-
-Directory:
-C:\Users\rcarb\Documents\Android Projects\PopularMovies\app\src\main\java\com\example\rcarb\popularmovies\Utils\UriBuilderUtil.java
+This is the first first project required by the Udacity Android Developer Nanodegree. theMoviedb api key is not included, and project setup by the suggested https://richardroseblog.wordpress.com/2016/05/29/hiding-secret-api-keys-from-git/. 
