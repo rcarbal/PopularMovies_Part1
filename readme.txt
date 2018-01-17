@@ -3,10 +3,4 @@ This Project was submitted by Ricardo A. Carballo.
 
 Special Notes.
 
-To run this project, please add the themoviedb api key to:
-
-UriBuilderUtil.java
-private static String apiKey = "";
-
-Directory:
-C:\Users\rcarb\Documents\Android Projects\PopularMovies\app\src\main\java\com\example\rcarb\popularmovies\Utils\UriBuilderUtil.java
+No special notes.
